@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.ssafy.imgarticle.model.mapper.ImgArticleMapper">
+	<resultMap type="imgArticleDto" id="imgArticle">
+		<result column="article_id" property="articleId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="create_time" property="createTime" />
+		<result column="user_id" property="userId" />
+		<result column="region" property="region" />
+		<result column="mainImg" property="mainImg" />
+		<result column="profile_img" property="profileImg" />
+		<result column="view" property="view" />
+		<result column="heart" property="heart" />
+		<result column="name" property="name" />
+		<result column="heartCnt" property="heartCnt" />
+	</resultMap>
+
+	<resultMap type="imgArticleDto" id="viewImgArticle"
+		extends="imgArticle">
+		<collection property="img" column="article_id"
+			javaType="list" ofType="string" select="imgList" />
+	</resultMap>
+
+	<select id="imgList" resultType="string">
+		select url from img_article_img
+		where article_id = #{articleId}
+	</select>
+
+
+
+	<sql id="search">
+		<if test="word != null and word != ''">
+				and title like concat('%', #{word}, '%')
+		</if>
+	</sql>
+
+	<select id="selectImgArticle" parameterType="map"
+		resultMap="viewImgArticle">
+		select a.article_id, a.title, a.content, a.create_time,
+		a.user_id,
+		a.region, a.view, if(b.heart_id is null, 0, 1) heart,
+		(select count(heart_id) from img_article_heart where article_id =
+		#{articleId}) heartCnt,
+		u.name, u.profile_img
+		from user u, img_article a
+		left outer join
+		img_article_heart b
+		on b.user_id = #{userId} and
+		a.user_id = b.user_id and b.article_id = #{articleId}
+		where
+		a.article_id = #{articleId} and
+		u.user_id = #{userId}
+	</select>
+	<select id="selectListRegionImgArticle" parameterType="string"
+		resultMap="imgArticle">
+		select a.article_id, a.title, a.view,
+		a.region,a.create_time, u.name,
+		(select url from img_article_img where
+		article_id = a.article_id limit 1) mainImg,
+		(select count(heart_id)
+		from img_article_heart where article_id = a.article_id) heartCnt
+		from
+		img_article a, user u
+		where a.user_id = u.user_id
+		and region = #{region}
+		order by heartCnt desc
+		limit 8
+	</select>
+
+	<select id="selectListImgArticle"
+		parameterType="searchCondition" resultMap="imgArticle">
+		select a.article_id, a.title, a.view,
+		a.region,a.create_time, u.name,
+		(select url from img_article_img where article_id = a.article_id limit
+		1) mainImg,
+		(select count(heart_id) from img_article_heart where
+		article_id = a.article_id) heartCnt
+		from img_article a, user u
+		where
+		a.user_id = u.user_id
+		<include refid="search" />
+		order by a.article_id desc
+		limit #{startIndex}, #{countPerPage}
+		
+	</select>
+		<select id="selectListRandomImgArticle" resultMap="imgArticle">
+		select a.article_id, a.title, a.view,
+		a.region,a.create_time, u.name,
+		(select url from img_article_img where article_id = a.article_id limit 1) mainImg,
+		(select count(heart_id) from img_article_heart where article_id = a.article_id) heartCnt
+		from img_article a, user u
+		where
+		a.user_id = u.user_id
+		order by rand()
+		limit 4
+	</select>
+
+	<select id="getTotalImgArticleCount"
+		parameterType="searchCondition" resultType="int">
+		select count(article_id)
+		from img_article a, user u
+		where a.user_id =
+		u.user_id
+		<include refid="search" />
+	</select>
+
+	<select id="getArticleId" parameterType="imgArticleDto"
+		resultType="int">
+		select article_id
+		from img_article
+		where user_id =#{userId}
+		and title = #{title}
+		and content = #{content}
+		and
+		region = #{region}
+		order by article_id desc
+		limit 1
+	</select>
+
+	<insert id="writeImgArticle" parameterType="imgArticleDto">
+		insert into
+		img_article(title, content, create_time, user_id, region)
+		values(#{title}, #{content}, now(), #{userId}, #{region});
+	</insert>
+
+	<insert id="writeImg" parameterType="map">
+		insert into
+		img_article_img(article_id, url)
+		values
+		(
+			#{articleId},
+			#{url}
+		)
+		
+	</insert>
+
+	<delete id="deleteImgArticle" parameterType="int">
+		delete from
+		img_article
+		where article_id = #{articleId}
+	</delete>
+
+	<update id="updateImgArticle" parameterType="imgArticleDto">
+		update img_article
+		set
+		title = #{title}, content = #{content}, region = #{region}
+		where
+		article_id = #{articleId}
+	</update>
+
+	<update id="plusView" parameterType="int">
+		update img_article set view
+		=
+		view + 1
+		where article_id = #{articleId}
+	</update>
+
+	<insert id="plusHeart" parameterType="map">
+		insert into
+		img_article_heart(article_id, user_id)
+		values(#{articleId}, #{userId})
+	</insert>
+
+	<delete id="minusHeart" parameterType="map">
+		delete from
+		img_article_heart
+		where article_id = #{articleId} and user_id =
+		#{userId}
+	</delete>
+
+</mapper>

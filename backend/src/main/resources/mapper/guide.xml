@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.guide.model.mapper.GuideMapper">
+	
+	<resultMap type="guideDto" id="guide">
+		<result column="guide_id" property="guideId"/>
+		<result column="id" property="id"/>
+		<result column="pwd" property="pwd"/>
+		<result column="email" property="email"/>
+		<result column="name" property="name"/>
+		<result column="profile_img" property="profileImg"/>
+		<result column="tel" property="tel"/>
+		<result column="license" property="license"/>
+		<result column="license_img" property="licenseImg"/>
+		<result column="account_num" property="accountNum"/>
+		<result column="account_bank" property="accountBank"/>
+		<result column="account_holder" property="accountHolder"/>
+		<result column="account_img" property="accountImg"/>
+	</resultMap>
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(id)
+		from guide
+		where id = #{id}
+	</select>
+	
+	<select id="emailCheck" parameterType="String" resultType="int">
+		select count(id)
+		from guide
+		where email = #{email}
+	</select>
+	
+	<insert id="joinGuide" parameterType="guideDto">
+		insert into guide (id, pwd, email, name, profile_img, tel, license, license_img, account_num, account_bank, account_holder, account_img)
+		values(#{id}, #{pwd}, #{email}, #{name}, #{profileImg}, #{tel}, #{license}, #{licenseImg}, #{accountNum}, #{accountBank}, #{accountHolder}, #{accountImg})
+	</insert>
+	
+	<select id="loginGuide" parameterType="map" resultMap="guide">
+		select id, name
+		from guide
+		where id = #{id} and pwd = #{pwd}
+	</select>
+	
+	<select id="getId" parameterType="map" resultType="String">
+		select id
+		from guide
+		where name = #{name} and email = #{email}
+	</select>
+	
+	<select id="validGuide" parameterType="map" resultType="int">
+		select count(id)
+		from guide
+		where id = #{id} and name = #{name} and email = #{email}
+	</select>
+	
+	<update id="updateGuide" parameterType="guideDto">
+		update guide
+		set pwd = #{pwd}, profile_img = #{profileImg}, tel = #{tel}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteGuide" parameterType="String">
+		delete from guide
+		where id = #{id}
+	</delete>	
+</mapper>

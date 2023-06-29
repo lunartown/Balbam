@@ -1,0 +1,250 @@
+{
+    "categories" : ["river", "park", "town", "ocean", "mountain", "market", "indoor"],
+    "posts": {
+      "river" : [
+        {
+          "id": 1,
+          "place": "고복자연공원",
+          "content": "정글돔 너무 좋아요!",
+          "hashtag" : ["공원", "자연"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700782-deb2dd3f-7460-4de2-b277-8e27cf3f0e26.jpg"
+        },
+        {
+          "id": 2,
+          "place": "금오산호수",
+          "content": "금오산호수 너무 좋아요!",
+          "hashtag" : ["저수지"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700786-b1eabfcf-9ed5-4770-9602-cc6eeacea78f.jpg"
+        },
+        {
+          "id": 3,
+          "place": "천상의정원",
+          "content": "천상의정원 너무 좋아요!",
+          "hashtag" : ["자연", "산", "강"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700789-610e15b6-8fdf-4f29-bafc-7c9d0ccecccb.jpg"
+        },
+        {
+          "id": 4,
+          "place": "탐진강",
+          "content": "탐진강 너무 좋아요!",
+          "hashtag" : ["자연", "강"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700792-48a20e38-6874-4c1d-a5ba-349275cfbd85.jpg"
+        },
+        {
+          "id": 5,
+          "place": "한강",
+          "content": "한강 너무 예뻐요!",
+          "hashtag" : ["서울", "강"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700794-5a548d87-3e84-4e77-a98b-763c39b1d9db.jpg"
+        }
+      ], 
+      "park" : [
+        {
+          "id": 1,
+          "place": "국립서울현충원",
+          "content": "국립서울현충원 너무 예뻐요!",
+          "hashtag" : ["공원", "벚꽃"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700738-15011a69-54d9-465f-a80d-c0889d19dfea.jpg"
+        },
+        {
+          "id": 2,
+          "place": "서울 보라매 공원",
+          "content": "보라매 공원 너무 좋아요!",
+          "hashtag" : ["공원", "벚꽃"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700743-d57f9466-f431-4dd5-b53d-321afb8119f6.jpg"
+        },
+        {
+          "id": 3,
+          "place": "서래섬",
+          "content": "서래섬 너무 좋아요!",
+          "hashtag" : ["공원", "유채꽃"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700744-5c5975e8-d1b6-4bae-960d-2a6c0cfe5c4d.jpg"
+        },
+        {
+          "id": 4,
+          "place": "서울숲",
+          "content": "서울숲 너무 좋아요!",
+          "hashtag" : ["산책"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700749-590cb27f-cc99-4e23-aa9c-9be5f0a17d04.jpg"
+        },
+        {
+          "id": 5,
+          "place": "환호공원",
+          "content": "환호공원 너무 예뻐요!",
+          "hashtag" : ["산책", "바다"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700755-1a096d3e-d05d-4320-9d5a-8adb43bfbfed.jpg"
+        }
+      ], 
+      "town" : [
+        {
+          "id": 1,
+          "place": "광양 매화마을",
+          "content": "매화마을 너무 예뻐요!",
+          "hashtag" : ["매화", "마을"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700685-71226fa6-b52f-4669-8538-515629610602.jpg"
+        },
+        {
+          "id": 2,
+          "place": "산수유마을",
+          "content": "산수유마을 너무 좋아요!",
+          "hashtag" : ["감성"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700691-8dfbcfb7-3646-482d-a2fc-99ab702c10ad.jpg"
+        },
+        {
+          "id": 3,
+          "place": "동두천 니지모리 스튜디오",
+          "content": "니지모리 스튜디오",
+          "hashtag" : ["골목", "감성"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700694-e6973ec7-a295-4096-a969-ba52932435ea.jpg"
+        },
+        {
+          "id": 4,
+          "place": "부산 감천문화마을",
+          "content": "감천문화마을 너무 예뻐요!",
+          "hashtag" : ["마을", "교복"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700699-e34fbd7a-89ac-4fae-bb84-2ebbb99b27cc.png"
+        },
+        {
+          "id": 5,
+          "place": "섬진마을",
+          "content": "섬진마을 너무 예뻐요!",
+          "hashtag" : ["경치", "감성"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700713-e57a5221-4458-40d3-a53e-3b552a57c7bc.jpg"
+        }
+      ], 
+      "ocean" : [
+        {
+          "id": 1,
+          "place": "부네치아",
+          "content": "부네치아 너무 예뻐요!",
+          "hashtag" : ["해외느낌"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700574-bb9b41cf-9520-4761-9b83-d767d49e7c11.png"
+        },
+        {
+          "id": 2,
+          "place": "해운대",
+          "content": "해운대 너무 좋아요!",
+          "hashtag" : ["바다", "해변"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700584-e72a8f43-dd15-4ee3-a86d-e60d82412440.jpg"
+        },
+        {
+          "id": 3,
+          "place": "외도",
+          "content": "외도 스튜디오",
+          "hashtag" : ["섬"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700589-c5d22e8d-10de-40de-90aa-2267f2033bca.jpg"
+        },
+        {
+          "id": 4,
+          "place": "죽변해안스카이레일",
+          "content": "죽변해안스카이레일 너무 예뻐요!",
+          "hashtag" : ["경치", "스카이레일"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700593-bb8c5b83-6c2f-49ff-a35d-d076e2bbd9d7.jpg"
+        },
+        {
+          "id": 5,
+          "place": "강구안",
+          "content": "강구안 너무 예뻐요!",
+          "hashtag" : ["바다"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700597-359ced03-b82f-4339-8cba-13f1dbf311be.jpg"
+        }
+      ], 
+      "mountain" : [
+        {
+          "id": 1,
+          "place": "관악산",
+          "content": "관악산 너무 예뻐요!",
+          "hashtag" : ["자연"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700535-7c761f6c-e1af-40f6-9acc-ca79a7c01afc.jpg"
+        },
+        {
+          "id": 2,
+          "place": "내장산",
+          "content": "내장산 너무 좋아요!",
+          "hashtag" : ["등산"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700540-799c8a36-0fc3-49db-b19b-06eeb6d3a4c4.jpg"
+        },
+        {
+          "id": 3,
+          "place": "북한산",
+          "content": "북한산 스튜디오",
+          "hashtag" : ["경치"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700543-ce8ca8f6-7fc9-4631-adbe-09fdcc5e6e57.jpg"
+        },
+        {
+          "id": 4,
+          "place": "운악산",
+          "content": "운악산 너무 예뻐요!",
+          "hashtag" : ["경치", "자연"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700549-d72786fa-92de-4e7d-9984-1bc4088aada6.jpg"
+        }
+      ], 
+      "market" : [
+        {
+          "id": 1,
+          "place": "깡통시장",
+          "content": "깡통시장 너무 예뻐요!",
+          "hashtag" : ["부산", "맛집"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700493-3938a7d3-367c-4d48-bc4f-34dd2669a1b6.jpg"
+        },
+        {
+          "id": 2,
+          "place": "서문시장",
+          "content": "서문시장 너무 좋아요!",
+          "hashtag" : ["대구"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700497-4f196214-7f48-4ce7-9265-ea8de02045bd.png"
+        },
+        {
+          "id": 3,
+          "place": "신원시장",
+          "content": "신원시장 스튜디오",
+          "hashtag" : ["서울", "신림역"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700504-5dcbbe37-f13b-440b-8b00-c6b88fd82cf7.jpg"
+        },
+        {
+          "id": 4,
+          "place": "칠성야시장",
+          "content": "칠성야시장 너무 예뻐요!",
+          "hashtag" : ["대구", "맛집"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700506-fc4cb8b1-e956-444b-80a8-17cd5467fa17.jpg"
+        }
+      ], 
+      "indoor" : [
+        {
+          "id": 1,
+          "place": "거제 정글돔",
+          "content": "정글돔 너무 좋아요!",
+          "hashtag" : ["자연", "수목원"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700061-8a79c0e4-dc4d-4512-8405-9eed32040aae.jpg"
+        },
+        {
+          "id": 2,
+          "place": "롯데월드",
+          "content": "롯데월드 너무 좋아요!",
+          "hashtag" : ["놀이동산"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700067-d561a95d-32b7-4903-b280-1a3b8f88927d.jpg"
+        },
+        {
+          "id": 3,
+          "place": "스포츠몬스터",
+          "content": "스포츠몬스터 너무 좋아요!",
+          "hashtag" : ["활동", "운동"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700095-aef2a30a-7403-47df-b213-b4d9a7b234df.jpg"
+        },
+        {
+          "id": 4,
+          "place": "코엑스아쿠아리움",
+          "content": "코엑스아쿠아리움 너무 좋아요!",
+          "hashtag" : ["물고기", "서울"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700099-df589065-b66f-4f72-a456-25a7f08c532b.jpg"
+        },
+        {
+          "id": 5,
+          "place": "통영 디피랑",
+          "content": "디피랑 너무 예뻐요!",
+          "hashtag" : ["디자인", "통영"],
+          "imgurl" : "https://user-images.githubusercontent.com/51029359/227700108-443f63b6-3a27-469b-ae43-ac3f70bfbde0.jpg"
+        }
+      ]
+    }
+}

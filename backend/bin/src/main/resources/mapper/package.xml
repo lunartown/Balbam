@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.ssafy.packages.model.mapper.PackageMapper">
+
+	<resultMap type="packageDto" id="package">
+		<result column="package_id" property="packageId"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="create_time" property="createTime"/>
+		<result column="guide_id" property="guideId"/>
+		<result column="start_date" property="startDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="price" property="price"/>
+		<result column="max_headcount" property="maxHeadCount"/>
+		<result column="heart" property="heart"/>
+		<result column="heartCnt" property="heartCnt"/>
+	</resultMap>
+
+	<resultMap id="packageInquiry" type="packageInquiryDto">
+		<result column="inquiry_id" property="inquiryId"/>
+		<result column="user_id" property="userId"/>
+		<result column="package_id" property="packageId"/>
+		<result column="content" property="content"/>
+		<result column="create_time" property="createTime"/>
+		<result column="secret" property="secret"/>
+	</resultMap>
+
+	<resultMap id="packageAnswer" type="packageAnswerDto">
+		<result column="answer_id" property="answerId"/>
+		<result column="inquiry_id" property="inquiryId"/>
+		<result column="content" property="content"/>
+		<result column="create_time" property="createTime"/>
+	</resultMap>
+
+	<resultMap type="packageDto" id="viewPackage"
+			   extends="package">
+		<collection property="img" column="package_id"
+					javaType="list" ofType="string" select="imgList"/>
+	</resultMap>
+
+	<select id="imgList" resultType="string">
+		select img from package_img
+		where package_id = #{packageId}
+	</select>
+
+
+	<sql id="search">
+		<if test="word != null and word != ''">
+			<if test="key != ''">
+				<if test="key == 'title'">
+					and title like concat('%', #{word}, '%')
+				</if>
+				<if test="key != 'title'">
+					and ${key} = #{word}
+				</if>
+			</if>
+		</if>
+	</sql>
+
+
+	<select id="selectPackage" parameterType="map"
+			resultMap="viewPackage">
+		select a.package_id, a.title, a.content, a.create_time,
+		a.guide_id, a.start_date, a.end_date, a.price, a.max_headcount, if(b.heart_id = null, 0, 1) heart
+		from package a
+		left outer join package_heart b
+		on b.guide_id = #{guideId} and b.user_id = #{userId}
+		where
+		a.package_id = #{packageId};
+	</select>
+
+	<select id="selectAllPackage" parameterType="searchCondition" resultMap="package">
+		select a.package_id, a.title, a.create_time,
+		a.guide_id, a.start_date, a.end_date, a.price, a.max_headcount, u.name,
+		(select count(heart_id) from article_heart where article_id = a.article_id) heartCnt
+		from package a, guide u
+		where a.guide_id = u.guide_id
+		<include refid="search"/>
+		order by a.package_id desc
+		limit #{startIndex}, #{countPerPage}
+	</select>
+
+	<select id="getTotalPackageCount" parameterType="searchCondition" resultType="int">
+		select count(package_id)
+		from package
+		<where>
+			<include refid="search"/>
+		</where>
+	</select>
+
+	<insert id="writePackage" parameterType="packageDto">
+		insert into
+		package(title, content, create_time, guide_id, start_date, end_date, price, max_headcount)
+		values(#{title}, #{content}, now(), #{guideId}, #{startDate}, #{endDate}, #{price}, #{maxHeadCount});
+	</insert>
+
+	<delete id="deletePackage" parameterType="int">
+		delete from package
+		where package_id = #{packageId}
+	</delete>
+
+	<update id="updatePackage" parameterType="packageDto">
+		update package set
+		title = #{title}, content = #{content}, price = #{price}, max_headcount = {maxHeadCount}
+		where
+		package_id = #{packageId}
+	</update>
+
+	<insert id="plusHeart" parameterType="map">
+		insert into package_heart(package_id, user_id)
+		values(#{packageId}, #{userId})
+	</insert>
+
+	<delete id="minusHeart" parameterType="map">
+		delete from package_heart
+		where package_id = #{packageId} and user_id = #{userId}
+	</delete>
+	<select id="selectPackageInquiry" parameterType="searchCondition" resultMap="packageInquiry">
+		select a.inquiry_id, a.user_id, a.package_id, a.content,a.create_time,a.secret, u.name
+		from package_inquiry a, user u
+		where a.user_id = u.user_id
+		order by a.create_time desc
+		limit #{startIndex}, #{countPerPage}
+	</select>
+	<select id="getTotalPackageInquiryCount" parameterType="int" resultType="int">
+		select count(inquiry_id)
+		from package_inquiry
+		where package_id = #{packageId}
+	</select>
+
+	<insert id="writePackageInquiry" parameterType="packageInquiryDto">
+		insert into
+		package_inquiry(user_id, package_id, content, create_time, secret)
+		values(#{userId}, #{packageId}, #{content}, now(), #{secret});
+	</insert>
+
+	<update id="updatePackageInquiry" parameterType="packageInquiryDto">
+		update package_inquiry set content = #{content}
+		where inquiry_id = #{inquiryId}
+	</update>
+
+	<delete id="deletePackageInquiry" parameterType="int">
+		delete from package_inquiry
+		where inquiry_id = #{inquiryId}
+	</delete>
+
+	<insert id="insertImg" parameterType="articleDto">
+		insert into package_img(package_id, img)
+		values
+		<foreach collection="img" item="item" separator=" , ">
+			(#{packageId}, #{item})
+		</foreach>
+	</insert>
+
+	<delete id="deleteImg" parameterType="int">
+		delete from package_img
+		where package_id = #{packageId}
+	</delete>
+
+	<select id="selectPackageAnswer" parameterType="map"
+			resultMap="packageAnswer">
+		select answer_id, content, create_time, inquiry_id
+		from inquiry_answer
+		where
+		answer_id = #{answerId};
+	</select>
+
+	<insert id="writePackageAnswer" parameterType="packageAnswerDto">
+		insert into
+		inquiry_answer(inquiry_id, content, create_time)
+		values(#{inquiryId}, #{content}, now());
+	</insert>
+
+	<update id="updatePackageAnswer" parameterType="packageAnswerDto">
+		update inquiry_answer set content = #{content}
+		where answer_id = #{answerId}
+	</update>
+
+	<delete id="deletePackageAnswer" parameterType="int">
+		delete from inquiry_answer
+		where answer_id = #{answerId}
+	</delete>
+
+	<select id="getTotalPackageHistoryCount" parameterType="int" resultType="int">
+		select count(history_id)
+		from package_history
+		where user_id = #{userId}
+	</select>
+
+	<insert id="writePackageHistory" parameterType="map">
+		insert into
+		package_history( package_id, user_id)
+		values(#{packageId}, #{userId});
+	</insert>
+
+	<delete id="deletePackageHistory" parameterType="int">
+		delete from package_history
+		where history_id = #{historyId}
+	</delete>
+
+</mapper>

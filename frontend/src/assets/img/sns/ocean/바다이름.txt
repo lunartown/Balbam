@@ -1,0 +1,5 @@
+ocean1 : 부네치아
+ocean2 : 해운대
+ocean3 : 외도
+ocean4 : 죽변해안스카이레일
+ocean5 : 강구안

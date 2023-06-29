@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.ssafy.notification.model.mapper.NotificationMapper">
+
+	<resultMap type="notificationDto" id="notification">
+		<result column="notification_id" property="notificationId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="create_time" property="createTime" />
+		<result column="category" property="category" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+
+	<resultMap type="notificationQuestionDto" id="question">
+		<result column="question_id" property="questionId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+	</resultMap>
+
+	<sql id="search">
+		<if test="word != null and word != ''">
+			<if test="key != ''">
+				<if test="key == 'title'">
+					and title like concat('%', #{word}, '%')
+				</if>
+				<if test="key != 'title'">
+					and ${key} = #{word}
+				</if>
+			</if>
+		</if>
+	</sql>
+
+	<sql id="catOrRegionCheck">
+		<if test="catOrRegion != null and catOrRegion != ''">
+			and category = #{catOrRegion}
+		</if>
+	</sql>
+
+
+	<select id="selectNotification" parameterType="int"
+		resultMap="notification">
+		select notification_id, title, content, create_time,
+		user_id, category
+		from notification
+		where
+		notification_id = #{notificationId};
+	</select>
+
+	<select id="selectListNotification"
+		parameterType="searchCondition" resultMap="notification">
+		select notification_id, user_id, title, create_time, category
+		from
+		notification
+		<where>
+			<include refid="search" />
+			<include refid="catOrRegionCheck"/>
+		</where>
+		order by notification_id desc
+		limit #{startIndex}, #{countPerPage}
+	</select>
+
+	<select id="getTotalNotificationCount"
+		parameterType="searchCondition" resultType="int">
+		select count(notification_id)
+		from notification
+		<where>
+			<include refid="search" />
+			<include refid="catOrRegionCheck"/>
+		</where>
+	</select>
+
+	<insert id="writeNotification" parameterType="notificationDto">
+		insert into
+		notification(title, content, create_time, user_id, category)
+		values(#{title},
+		#{content}, now(), #{userId}, #{category});
+	</insert>
+
+	<delete id="deleteNotification" parameterType="int">
+		delete from
+		notification
+		where notification_id = #{notificationId}
+	</delete>
+
+	<update id="updateNotification" parameterType="notificationDto">
+		update
+		notification set
+		title = #{title}, content = #{content}
+		where
+		notification_id = #{notificationId}
+	</update>
+
+
+	<select id="selectQuestion" parameterType="searchCondition"
+		resultMap="question">
+		select question_id, title, content
+		from questions
+		<where>
+			<include refid="search" />
+		</where>
+		order by question_id desc
+		limit #{startIndex}, #{countPerPage}
+	</select>
+
+	<select id="getTotalQuestionCount"
+		parameterType="searchCondition" resultType="int">
+		select count(question_id)
+		from questions
+		<where>
+			<include refid="search" />
+		</where>
+	</select>
+</mapper>

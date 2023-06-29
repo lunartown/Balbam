@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.article.model.mapper.ArticleMapper">
+
+    <resultMap type="articleDto" id="article">
+        <result column="article_id" property="articleId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="user_id" property="userId"/>
+        <result column="category" property="category"/>
+        <result column="view" property="view"/>
+        <result column="heart" property="heart"/>
+        <result column="name" property="userName"/>
+        <result column="heartCnt" property="heartCnt"/>
+    </resultMap>
+
+    <resultMap id="articleComment" type="articleCommentDto">
+        <result column="comment_id" property="commentId"/>
+        <result column="user_id" property="userId"/>
+        <result column="article_id" property="articleId"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <resultMap type="articleDto" id="viewArticle"
+               extends="article">
+        <collection property="img" column="article_id"
+                    javaType="list" ofType="string" select="imgList"/>
+    </resultMap>
+
+    <select id="imgList" resultType="string">
+        select img from article_img
+        where article_id = #{articleId}
+    </select>
+
+
+    <sql id="search">
+        <if test="word != null and word != ''">
+            <if test="key != ''">
+                <if test="key == 'title'">
+                    and title like concat('%', #{word}, '%')
+                </if>
+                <if test="key != 'title'">
+                    and ${key} = #{word}
+                </if>
+            </if>
+        </if>
+    </sql>
+
+
+    <select id="selectArticle" parameterType="map"
+            resultMap="viewArticle">
+        select a.article_id, a.title, a.content, a.create_time,
+        a.user_id,
+        a.category, a.view, if(b.heart_id = null, 0, 1) heart
+        from article
+        a left outer join article_heart b
+        on b.user_id = #{userId} and a.user_id = b.user_id
+        where
+        a.article_id = #{articleId};
+    </select>
+
+    <select id="selectAllArticle" parameterType="searchCondition" resultMap="article">
+        select a.article_id, a.user_id, a.title, a.view, a.category,a.create_time, u.name,
+        (select count(heart_id) from article_heart where article_id = a.article_id) heartCnt
+        from article a, user u
+        where a.user_id = u.user_id
+        <include refid="search"/>
+        order by a.article_id desc
+        limit #{startIndex}, #{countPerPage}
+    </select>
+
+    <select id="getTotalArticleCount" parameterType="searchCondition" resultType="int">
+        select count(article_id)
+        from article
+        <where>
+            <include refid="search"/>
+        </where>
+    </select>
+
+    <insert id="writeArticle" parameterType="articleDto">
+        insert into
+        article(title, content, create_time, user_id, category)
+        values(#{title}, #{content}, now(), #{userId}, #{category});
+    </insert>
+
+    <delete id="deleteArticle" parameterType="int">
+        delete from article
+        where article_id = #{articleId}
+    </delete>
+
+    <update id="updateArticle" parameterType="articleDto">
+        update article set
+        title = #{title}, content = #{content}, category = #{category}
+        where
+        article_id = #{articleId}
+    </update>
+
+    <update id="plusView" parameterType="int">
+        update article set view =
+        view + 1
+        where article_id = #{articleId}
+    </update>
+
+    <insert id="plusHeart" parameterType="map">
+        insert into article_heart(article_id, user_id)
+        values(#{articleId}, #{userId})
+    </insert>
+
+    <delete id="minusHeart" parameterType="map">
+        delete from article_heart
+        where article_id = #{articleId} and user_id = #{userId}
+    </delete>
+    <select id="selectArticleComment" parameterType="searchCondition" resultMap="articleComment">
+        select a.comment_id, a.user_id, a.article_id, a.content,a.create_time, u.name
+        from article_comment a, user u
+        where a.user_id = u.user_id
+        order by a.create_time desc
+        limit #{startIndex}, #{countPerPage}
+    </select>
+    <select id="getTotalCommentCount" parameterType="int" resultType="int">
+        select count(article_id)
+        from article
+        where article_id  = #{articleId}
+    </select>
+
+    <insert id="writeComment" parameterType="articleCommentDto">
+        insert into
+        article_comment(user_id, article_id, content, create_time)
+        values(#{userId}, #{articleId}, #{content}, now());
+    </insert>
+
+    <update id="updateComment" parameterType="articleCommentDto">
+        update article_comment set content = #{content}
+        where comment_id = #{commentId}
+    </update>
+
+    <delete id="deleteComment" parameterType="int">
+        delete from article_comment
+        where comment_id = #{commentId}
+    </delete>
+
+    <insert id="insertImg" parameterType="articleDto">
+        insert into article_img(article_id, img)
+        values
+        <foreach collection="img" item="item" separator=" , ">
+            (#{articleId}, #{item})
+        </foreach>
+    </insert>
+
+    <delete id="deleteImg" parameterType="int">
+        delete from article_img
+        where article_id = #{articleId}
+    </delete>
+
+</mapper>

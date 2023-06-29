@@ -1,0 +1,5 @@
+indoor1 : 거제정글돔
+indoor2 : 롯데월드
+indoor3 : 스포츠몬스터
+indoor4 : 코엑스아쿠아리움
+indoor5 : 디피랑
