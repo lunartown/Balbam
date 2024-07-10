@@ -1,6 +1,6 @@
 # 🚶Balbam Trip
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/MainPage.png)
 
+<img src="README_IMG/MainPage.png">
 
 투어 말고 다양한 관광 상품이 필요하시다고요?
 
@@ -48,11 +48,11 @@
 ```
 
 ## 🎈 Class-Diagram
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/ClassDiagram.png)
+<img src="README_IMG/ClassDiagram.png">
 
 ## 🎈 Swagger
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/SwaggerContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/SwaggerContent2.png)
+<img src="README_IMG/SwaggerContent1.png">
+<img src="README_IMG/SwaggerContent2.png">
 
 ## 📢Web Function
 
@@ -70,8 +70,9 @@
 
 
 
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/MainPageContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/MainPageContent2.png)
+
+<img src="README_IMG/MainPageContent1.png">
+<img src="README_IMG/MainPageContent2.png">
 ```
 ✨ 메인 페이지 구성요소
 - 메뉴 바(패키지, 게시판, 여행지도 등)
@@ -80,8 +81,8 @@
 - 무작위 사진 게시글 소개
 ```
 
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/MapContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/MapContent2.png)
+<img src="README_IMG/MapContent1.png">
+<img src="README_IMG/MapContent2.png">
 ```
 🎈지역별 관광지 페이지 구성요소
 - NaverMap API
@@ -90,9 +91,9 @@
 - 카테고리에 맞는 관광지 마커
 ```
 
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/ArticleContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/ArticleContent2.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/ArticleContent3.png)
+<img src="README_IMG/ArticleContent1.png">
+<img src="README_IMG/ArticleContent2.png">
+<img src="README_IMG/ArticleContent3.png">
 
 ```
 📃게시판 페이지 구성요소
@@ -105,9 +106,9 @@
 - 이미지 업로드
 ```
 
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/LoginContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/LoginContent2.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/LoginContent3.png)
+<img src="README_IMG/LoginContent1.png">
+<img src="README_IMG/LoginContent2.png">
+<img src="README_IMG/LoginContent3.png">
 
 ```
 🏆로그인 페이지 구성요소
@@ -116,10 +117,9 @@
 - 비밀번호/아이디 찾기
 - 로그인 5회 실패시 CapCha 발생
 ```
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/PackageContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/PackageContent2.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/PackageContent3.png)
-
+<img src="README_IMG/PackageContent1.png">
+<img src="README_IMG/PackageContent2.png">
+<img src="README_IMG/PackageContent3.png">
 ```
 👦패키지 구성요소
 - 패키지 작성
@@ -127,9 +127,9 @@
 - 패키지 문의 및 리뷰 작성
 - 패키지 찜 및 예약 처리
 ```
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/NotificationContent1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/NotificationContent2.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/NotificationContent3.png)
+<img src="README_IMG/NotificationContent1.png">
+<img src="README_IMG/NotificationContent2.png">
+<img src="README_IMG/NotificationContent3.png">
 
 ```
 📦고객센터 구성요소
@@ -139,9 +139,9 @@
 - 공지 카테고리별로 보기
 ```
 
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/HistoryConten1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/HistoryConten2.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/HistoryConten3.png)
+<img src="README_IMG/HistoryContent1.png">
+<img src="README_IMG/HistoryContent2.png">
+<img src="README_IMG/HistoryContent3.png">
 
 ```
 👷마이 페이지 구성요소
@@ -150,9 +150,9 @@
 - 회원 탈퇴 기능
 ```
 ## 🎈 Process
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/Process1.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/Process2.png)
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/Process3.png)
+<img src="README_IMG/Process1.png">
+<img src="README_IMG/Process2.png">
+<img src="README_IMG/Process3.png">
 
 ## 🎓Studying Info
 
