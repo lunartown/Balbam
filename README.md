@@ -37,7 +37,7 @@
 
 
 ## 👋 ER-Diagram
-![ex_screenshot](https://lab.ssafy.com/cksgud410/balbam_final_seoul_10_lch_cmh/-/raw/master/README_IMG/ER-Diagram.png)
+<img src="README_IMG/ER-Diagram.png">
 
 ```
 💾 테이블 구성요소
