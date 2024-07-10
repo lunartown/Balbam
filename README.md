@@ -73,6 +73,7 @@
 
 <img src="README_IMG/MainPageContent1.png">
 <img src="README_IMG/MainPageContent2.png">
+
 ```
 ✨ 메인 페이지 구성요소
 - 메뉴 바(패키지, 게시판, 여행지도 등)
@@ -83,6 +84,7 @@
 
 <img src="README_IMG/MapContent1.png">
 <img src="README_IMG/MapContent2.png">
+
 ```
 🎈지역별 관광지 페이지 구성요소
 - NaverMap API
@@ -120,6 +122,7 @@
 <img src="README_IMG/PackageContent1.png">
 <img src="README_IMG/PackageContent2.png">
 <img src="README_IMG/PackageContent3.png">
+
 ```
 👦패키지 구성요소
 - 패키지 작성
